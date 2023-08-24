@@ -10,7 +10,7 @@ function includes() {
 
     const testList: Test[] = [
         firstValue,
-        new Test(2), 
+        new Test(2),
         new Test(3)
     ];
     console.log(testList.includes(firstValue));

@@ -5,6 +5,30 @@ function concat() {
     const newCompleteCars = cars.concat(newCars);
     console.log(newCompleteCars);
 }
+function every() {
+    const products = [
+        {
+            id: 10,
+            name: "Laptop",
+            quantity: 0,
+            total: 120.50
+        },
+        {
+            id: 34,
+            name: "Mouse",
+            quantity: 10,
+            total: 20
+        },
+        {
+            id: 12,
+            name: "Teclado",
+            quantity: 10,
+            total: 10
+        }
+    ];
+    const isSomeEmptyProduct = products.every(x => x.quantity > 0);
+    console.log(isSomeEmptyProduct);
+}
 function testFill() {
     const fruits = ["mango", "platano", "manzana", "Pera"];
     const fruitsCopy = [...fruits];
@@ -53,7 +77,6 @@ class Test {
     }
 }
 function includes() {
-    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const firstValue = new Test(1);
     const testList = [
         firstValue,
@@ -62,4 +85,96 @@ function includes() {
     ];
     console.log(testList.includes(firstValue));
 }
-includes();
+every();
+function join() {
+    const cars = ["BMW", "Nissan", "Mercedez"];
+    console.log(cars.join("-"));
+    const users = [
+        {
+            id: 0,
+            name: "Daniel"
+        },
+        {
+            id: 1,
+            name: "Carlos"
+        },
+        {
+            id: 2,
+            name: "Ana"
+        }
+    ];
+    console.log(users.map(x => x.name).join(","));
+}
+function map() {
+    const users = [
+        {
+            id: 0,
+            name: "Daniel"
+        },
+        {
+            id: 1,
+            name: "Carlos"
+        },
+        {
+            id: 2,
+            name: "Ana"
+        }
+    ];
+    const ids = users.map(user => {
+        return {
+            userId: user.id,
+            userName: user.name + " test"
+        };
+    });
+    console.log(ids);
+}
+function reduce() {
+    const products = [
+        {
+            id: 10,
+            name: "Laptop",
+            quantity: 2,
+            total: 120.50
+        },
+        {
+            id: 34,
+            name: "Mouse",
+            quantity: 1,
+            total: 20
+        },
+        {
+            id: 12,
+            name: "Teclado",
+            quantity: 10,
+            total: 10
+        }
+    ];
+    const completeNames = products.reduce((previuesValue, user) => `${previuesValue},${user.name}`, 'Comenzando a concatenar');
+    const total = products.reduce((total, product) => total + (product.quantity * product.total), 1000);
+    console.log(completeNames);
+    console.log(total);
+}
+function some() {
+    const products = [
+        {
+            id: 10,
+            name: "Laptop",
+            quantity: 0,
+            total: 120.50
+        },
+        {
+            id: 34,
+            name: "Mouse",
+            quantity: 0,
+            total: 20
+        },
+        {
+            id: 12,
+            name: "Teclado",
+            quantity: 10,
+            total: 10
+        }
+    ];
+    const someProductIsEmpty = products.some(x => x.quantity === 0);
+    console.log(someProductIsEmpty);
+}

@@ -4,4 +4,9 @@
 // concat();
 // find();
 // findIndex();
-includes();
+// includes();
+// map();
+// reduce();
+// join();
+// some();
+every();
