@@ -1,63 +1,87 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-// interface Test1 {
-//     name: string;
+// // interface Test1 {
+// //     name: string;
+// // }
+// // interface Test2 {
+// //     nameTest2: string;
+// // }
+// // class TestClass implements Test1, Test2 {
+// //     nameTest2: string;
+// //     name: string;
+// import { Subject } from "rxjs";
+// // }
+// export function NotNullable(message: string): PropertyDecorator {
+//     return function (target: Object, key: string | symbol) {
+//         const getter = function () {
+//             return target;
+//         }
+//         const setter = function (data: string) {
+//             if (data === null || data === undefined || data.length === 0) {
+//                 throw new Error(message);
+//             }
+//             target = data;
+//         }
+//         Object.defineProperty(target, key, {
+//             get: getter,
+//             set: setter,
+//             enumerable: true,
+//             configurable: true
+//         });
+//     }
 // }
-// interface Test2 {
-//     nameTest2: string;
+// class Padre {
+//     @NotNullable("el color deojos es requerido")
+//     colorOjos: string = '';
+//     age: number;
+//     colorDePelo: string;
+//     constructor(color: string, age: number, colorDePelo: string) {
+//         this.colorOjos = color;
+//         this.age = age;
+//         this.colorDePelo = colorDePelo;
+//     }
+//     saludar(): void {
+//         console.log("hola que tal yo soy el padre");
+//     }
 // }
-// class TestClass implements Test1, Test2 {
-//     nameTest2: string;
-//     name: string;
+// class Hijo extends Padre {
+//     altura: number;
+//     colorOjos: string = '';
+//     constructor(color: string, age: number, colorDePelo: string) {
+//         super(color, age, colorDePelo);
+//     }
+//     saludar(): void {
+//         console.log("hola que tal yo soy el hijo")
+//     }
 // }
-function NotNullable(message) {
-    return function (target, key) {
-        const getter = function () {
-            return target;
-        };
-        const setter = function (data) {
-            if (data === null || data === undefined || data.length === 0) {
-                throw new Error(message);
-            }
-            target = data;
-        };
-        Object.defineProperty(target, key, {
-            get: getter,
-            set: setter,
-            enumerable: true,
-            configurable: true
-        });
-    };
-}
-class Padre {
-    constructor(color, age, colorDePelo) {
-        this.colorOjos = '';
-        this.colorOjos = color;
-        this.age = age;
-        this.colorDePelo = colorDePelo;
-    }
-    saludar() {
-        console.log("hola que tal yo soy el padre");
+// // const hijo = new Hijo("", 15, "negro");
+// // hijo.altura = 160;
+// // hijo.saludar();
+// // console.log(hijo);
+// // const paeg = new Padre("",56, "negro");
+// const subject = new Subject<string>();
+// subject.next("valor 1");
+// subject.subscribe(value => {
+//     console.log(value);
+// });
+// subject.next("valor 2");
+// subject.next("valor 3");
+// subject.next("valor 4");
+class User {
+    constructor(name, email, cp) {
+        this.name = '';
+        this.email = '';
+        this.cp = '';
+        this.name = name;
+        this.email = email;
+        this.cp = cp;
     }
 }
-__decorate([
-    NotNullable("el color deojos es requerido")
-], Padre.prototype, "colorOjos", void 0);
-class Hijo extends Padre {
-    constructor(color, age, colorDePelo) {
-        super(color, age, colorDePelo);
-        this.colorOjos = '';
-    }
-    saludar() {
-        console.log("hola que tal yo soy el hijo");
-    }
+const users = [
+    new User("josue", "josue@hotmail.com", "12345"),
+    new User("daniel", "daniel@hotmail.com", "54321"),
+    new User("ricardo", "ricardo@hotmail.com", "12375"),
+    new User("jose", "jose@hotmail.com", "09786"),
+];
+function test(key, text) {
+    return users.filter(x => x[key].includes(text));
 }
-const hijo = new Hijo("", 15, "negro");
-hijo.altura = 160;
-hijo.saludar();
-console.log(hijo);
-// const paeg = new Padre("",56, "negro");
+console.log(test('email', "@hotmail"));
